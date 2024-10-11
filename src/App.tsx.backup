@@ -1,0 +1,42 @@
+import React from 'react';
+import { Button } from "@/components/ui/button"
+import { Textarea } from "@/components/ui/textarea"
+import { Input } from "@/components/ui/input"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Mic, Play, Save, FileDown, Trash2, Menu, Wand2, Copy } from 'lucide-react';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
+import { useToast } from "@/hooks/use-toast"
+
+function App() {
+  return (
+    <div className="container mx-auto p-4">
+      <h1 className="text-3xl font-bold mb-4">Speech Writing Application</h1>
+      <Tabs defaultValue="write">
+        <TabsList>
+          <TabsTrigger value="write">Write</TabsTrigger>
+          <TabsTrigger value="voice">Voice Notes</TabsTrigger>
+        </TabsList>
+        <TabsContent value="write">
+          <Textarea placeholder="Start writing your speech here..." className="w-full h-64 mb-4" />
+          <div className="flex space-x-2">
+            <Button><Save className="mr-2 h-4 w-4" /> Save</Button>
+            <Button variant="outline"><Play className="mr-2 h-4 w-4" /> Preview</Button>
+          </div>
+        </TabsContent>
+        <TabsContent value="voice">
+          <div className="space-y-4">
+            <Button><Mic className="mr-2 h-4 w-4" /> Record Voice Note</Button>
+            <ul className="space-y-2">
+              <li className="flex items-center justify-between p-2 bg-secondary rounded">
+                <span>Voice Note 1</span>
+                <Button variant="ghost" size="sm"><Play className="h-4 w-4" /></Button>
+              </li>
+            </ul>
+          </div>
+        </TabsContent>
+      </Tabs>
+    </div>
+  );
+}
+
+export default App;
